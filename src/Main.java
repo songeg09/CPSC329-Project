@@ -2,7 +2,7 @@ package src;
 
 import src.JeopardyGame;
 
-//test commit
+
 public class Main {
 
     public static final int SCREEN_WIDTH = 1280;
