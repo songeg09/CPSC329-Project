@@ -1,13 +1,18 @@
+package src;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import static javax.swing.UIManager.put;
 
 public class JeopardyGame extends JFrame {
 
@@ -50,6 +55,7 @@ public class JeopardyGame extends JFrame {
     private JButton startButton = new JButton(startButtonBasicImage);
     private JButton quitButton = new JButton(quitButtonBasicImage);
     // quiz buttons
+
     private JButton category11Button = new JButton(quiz100BasicImage);
     private JButton category12Button = new JButton(quiz200BasicImage);
     private JButton category13Button = new JButton(quiz300BasicImage);
@@ -81,6 +87,38 @@ public class JeopardyGame extends JFrame {
     private JButton category64Button = new JButton(quiz400BasicImage);
     private JButton category65Button = new JButton(quiz500BasicImage);
 
+    private HashMap<String, JButton> buttons = new HashMap<>(){{
+        put("category11Button", category11Button);
+        put("category12Button", category12Button);
+        put("category13Button", category13Button);
+        put("category14Button", category14Button);
+        put("category15Button", category15Button);
+        put("category21Button", category21Button);
+        put("category22Button", category22Button);
+        put("category23Button", category23Button);
+        put("category24Button", category24Button);
+        put("category25Button", category25Button);
+        put("category31Button", category31Button);
+        put("category32Button", category32Button);
+        put("category33Button", category33Button);
+        put("category34Button", category34Button);
+        put("category35Button", category35Button);
+        put("category41Button", category41Button);
+        put("category42Button", category42Button);
+        put("category43Button", category43Button);
+        put("category44Button", category44Button);
+        put("category45Button", category45Button);
+        put("category51Button", category51Button);
+        put("category52Button", category52Button);
+        put("category53Button", category53Button);
+        put("category54Button", category54Button);
+        put("category55Button", category55Button);
+        put("category61Button", category61Button);
+        put("category62Button", category62Button);
+        put("category63Button", category63Button);
+        put("category64Button", category64Button);
+        put("category65Button", category65Button);
+    }};
 
     //private int mouseX, mouseY;
 
@@ -140,11 +178,16 @@ public class JeopardyGame extends JFrame {
             public void mousePressed(MouseEvent e) {
                 startButton.setVisible(false);
                 quitButton.setVisible(false);
-                category11Button.setVisible(true);
-                category12Button.setVisible(true);
-                category13Button.setVisible(true);
-                category14Button.setVisible(true);
-                category15Button.setVisible(true);
+                for (int i=1; i<7; i++){
+                    for (int j=1; j<6; j++){
+                        String category = "category";
+                        String first = String.valueOf(i);
+                        String second = String.valueOf(j);
+                        String button = "Button";
+                        String result = category + first + second + button;
+                        buttons.get(result).setVisible(true);
+                    }
+                }
                 background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
                 isMainScreen = true;
             }
@@ -175,120 +218,40 @@ public class JeopardyGame extends JFrame {
         add(quitButton);
 
 // setting quiz buttons
-        category11Button.setVisible(false);
-        category11Button.setBounds(95,112,180,100);
-        category11Button.setBorderPainted(false);
-        category11Button.setContentAreaFilled(false);
-        category11Button.setFocusPainted(false);
-        category11Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                category11Button.setIcon(quiz100EnteredImage);
-                category11Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                category11Button.setIcon(quiz100BasicImage);
-                category11Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.exit(0);
-            }
-        });
-        add(category11Button);
+//        category11Button.setVisible(false);
+//        category11Button.setBounds(95,112,180,100);
+//        category11Button.setBorderPainted(false);
+//        category11Button.setContentAreaFilled(false);
+//        category11Button.setFocusPainted(false);
+//        category11Button.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseEntered(MouseEvent e) {
+//                category11Button.setIcon(quiz100EnteredImage);
+//                category11Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//            }
+//            @Override
+//            public void mouseExited(MouseEvent e) {
+//                category11Button.setIcon(quiz100BasicImage);
+//                category11Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+//            }
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//                System.exit(0);
+//            }
+//        });
+//        add(category11Button);
 
-        category12Button.setVisible(false);
-        category12Button.setBounds(95,214,180,100);
-        category12Button.setBorderPainted(false);
-        category12Button.setContentAreaFilled(false);
-        category12Button.setFocusPainted(false);
-        category12Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                category12Button.setIcon(quiz200EnteredImage);
-                category12Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                category12Button.setIcon(quiz200BasicImage);
-                category12Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.exit(0);
-            }
-        });
-        add(category12Button);
 
-        category13Button.setVisible(false);
-        category13Button.setBounds(95,316,180,100);
-        category13Button.setBorderPainted(false);
-        category13Button.setContentAreaFilled(false);
-        category13Button.setFocusPainted(false);
-        category13Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                category13Button.setIcon(quiz300EnteredImage);
-                category13Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        for (int i=1; i<7; i++){
+            for (int j=1; j<6; j++){
+                String category = "category";
+                String first = String.valueOf(i);
+                String second = String.valueOf(j);
+                String button = "Button";
+                String result = category + first + second + button;
+                setButton(buttons.get(result), i, j);
             }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                category13Button.setIcon(quiz300BasicImage);
-                category13Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.exit(0);
-            }
-        });
-        add(category13Button);
-
-        category14Button.setVisible(false);
-        category14Button.setBounds(95,418,180,100);
-        category14Button.setBorderPainted(false);
-        category14Button.setContentAreaFilled(false);
-        category14Button.setFocusPainted(false);
-        category14Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                category14Button.setIcon(quiz400EnteredImage);
-                category14Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                category14Button.setIcon(quiz400BasicImage);
-                category14Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.exit(0);
-            }
-        });
-        add(category14Button);
-
-        category15Button.setVisible(false);
-        category15Button.setBounds(95,520,180,100);
-        category15Button.setBorderPainted(false);
-        category15Button.setContentAreaFilled(false);
-        category15Button.setFocusPainted(false);
-        category15Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                category15Button.setIcon(quiz500EnteredImage);
-                category15Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                category15Button.setIcon(quiz500BasicImage);
-                category15Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.exit(0);
-            }
-        });
-        add(category15Button);
+        }
 
     }
 
@@ -313,6 +276,81 @@ public class JeopardyGame extends JFrame {
         this.repaint();
     }
 
+    public void setButton(JButton btn, int i, int j) {
+        int x = 0;
+        int y = 0;
+
+        if (i == 1){
+            x = 95;
+        }else if (i == 2) {
+            x = 277;
+        }else if (i == 3) {
+            x = 459;
+        }else if (i == 4) {
+            x = 641;
+        }else if (i == 5) {
+            x = 823;
+        }else{
+            x = 1005;
+        }
+
+        if (j == 1){
+            y = 112;
+        }else if (j == 2) {
+            y = 214;
+        }else if (j == 3) {
+            y = 316;
+        }else if (j == 4) {
+            y = 418;
+        }else {
+            y = 520;
+        }
+
+        btn.setVisible(false);
+        btn.setBounds(x, y, 180, 100);
+        btn.setBorderPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setFocusPainted(false);
+        btn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                if (j == 1){
+                    btn.setIcon(quiz100EnteredImage);
+                } else if (j == 2) {
+                    btn.setIcon(quiz200EnteredImage);
+                } else if (j == 3) {
+                    btn.setIcon(quiz300EnteredImage);
+                } else if (j == 4) {
+                    btn.setIcon(quiz400EnteredImage);
+                } else {
+                    btn.setIcon(quiz500EnteredImage);
+                }
+                btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if (j == 1){
+                    btn.setIcon(quiz100BasicImage);
+                } else if (j == 2) {
+                    btn.setIcon(quiz200BasicImage);
+                } else if (j == 3) {
+                    btn.setIcon(quiz300BasicImage);
+                } else if (j == 4) {
+                    btn.setIcon(quiz400BasicImage);
+                } else {
+                    btn.setIcon(quiz500BasicImage);
+                }
+                btn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.exit(0);
+            }
+        });
+        add(btn);
+    }
 }
 
 
