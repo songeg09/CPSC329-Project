@@ -51,6 +51,8 @@ public class JeopardyGame extends JFrame {
 
     private Image background = new ImageIcon(Main.class.getResource("../images/introBackground.jpg")).getImage();
 
+    private Image turnImage = new ImageIcon(Main.class.getResource("../images/Player1.png")).getImage();
+
     private JButton exitButton = new JButton(exitButtonBasicImage);
     private JButton startButton = new JButton(startButtonBasicImage);
     private JButton quitButton = new JButton(quitButtonBasicImage);
@@ -123,6 +125,8 @@ public class JeopardyGame extends JFrame {
     //private int mouseX, mouseY;
 
     private boolean isMainScreen = false;
+    private int turn = 1;
+    private boolean turnShown = false;
 
     public JeopardyGame(){
         setUndecorated(true);
@@ -178,16 +182,7 @@ public class JeopardyGame extends JFrame {
             public void mousePressed(MouseEvent e) {
                 startButton.setVisible(false);
                 quitButton.setVisible(false);
-                for (int i=1; i<7; i++){
-                    for (int j=1; j<6; j++){
-                        String category = "category";
-                        String first = String.valueOf(i);
-                        String second = String.valueOf(j);
-                        String button = "Button";
-                        String result = category + first + second + button;
-                        buttons.get(result).setVisible(true);
-                    }
-                }
+                quizButtonsVisible();
                 background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
                 isMainScreen = true;
             }
@@ -217,30 +212,6 @@ public class JeopardyGame extends JFrame {
         });
         add(quitButton);
 
-// setting quiz buttons
-//        category11Button.setVisible(false);
-//        category11Button.setBounds(95,112,180,100);
-//        category11Button.setBorderPainted(false);
-//        category11Button.setContentAreaFilled(false);
-//        category11Button.setFocusPainted(false);
-//        category11Button.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseEntered(MouseEvent e) {
-//                category11Button.setIcon(quiz100EnteredImage);
-//                category11Button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//            }
-//            @Override
-//            public void mouseExited(MouseEvent e) {
-//                category11Button.setIcon(quiz100BasicImage);
-//                category11Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-//            }
-//            @Override
-//            public void mousePressed(MouseEvent e) {
-//                System.exit(0);
-//            }
-//        });
-//        add(category11Button);
-
 
         for (int i=1; i<7; i++){
             for (int j=1; j<6; j++){
@@ -253,26 +224,37 @@ public class JeopardyGame extends JFrame {
             }
         }
 
+
+
+//        if(isMainScreen){
+//            if(turn == 1){
+//
+//            }
+//        }
+
     }
 
     public void paint(Graphics g) {
         screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         screenGraphic = screenImage.getGraphics();
+
         screenDraw(screenGraphic);
+
         g.drawImage(screenImage, 0, 0, null);
     }
 
     public void screenDraw(Graphics g) {
         g.drawImage(background,  0, 0, null);
         if(isMainScreen) {
-            g.drawImage(category1Image,  95, 10, null);
-            g.drawImage(category2Image,  277, 10, null);
-            g.drawImage(category3Image,  459, 10, null);
+            g.drawImage(category1Image,  215, 10, null);
+            g.drawImage(category2Image,  357, 10, null);
+            g.drawImage(category3Image,  499, 10, null);
             g.drawImage(category4Image,  641, 10, null);
-            g.drawImage(category5Image,  823, 10, null);
-            g.drawImage(category6Image,  1005, 10, null);
+            g.drawImage(category5Image,  783, 10, null);
+            g.drawImage(category6Image,  925, 10, null);
         }
         paintComponents(g);
+
         this.repaint();
     }
 
@@ -281,33 +263,33 @@ public class JeopardyGame extends JFrame {
         int y = 0;
 
         if (i == 1){
-            x = 95;
+            x = 215;
         }else if (i == 2) {
-            x = 277;
+            x = 357;
         }else if (i == 3) {
-            x = 459;
+            x = 499;
         }else if (i == 4) {
             x = 641;
         }else if (i == 5) {
-            x = 823;
+            x = 783;
         }else{
-            x = 1005;
+            x = 925;
         }
 
         if (j == 1){
-            y = 112;
+            y = 114;
         }else if (j == 2) {
-            y = 214;
+            y = 196;
         }else if (j == 3) {
-            y = 316;
+            y = 278;
         }else if (j == 4) {
-            y = 418;
+            y = 360;
         }else {
-            y = 520;
+            y = 442;
         }
 
         btn.setVisible(false);
-        btn.setBounds(x, y, 180, 100);
+        btn.setBounds(x, y, 140, 80);
         btn.setBorderPainted(false);
         btn.setContentAreaFilled(false);
         btn.setFocusPainted(false);
@@ -346,10 +328,61 @@ public class JeopardyGame extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                System.exit(0);
+
+                showQuiz(btn);
+
             }
         });
         add(btn);
+
+    }
+
+    public void quizButtonsVisible(){
+        for (int i=1; i<7; i++){
+            for (int j=1; j<6; j++){
+                String category = "category";
+                String first = String.valueOf(i);
+                String second = String.valueOf(j);
+                String button = "Button";
+                String result = category + first + second + button;
+                buttons.get(result).setVisible(true);
+            }
+        }
+    }
+
+    public void quizButtonsInvisible(){
+        for (int i=1; i<7; i++){
+            for (int j=1; j<6; j++){
+                String category = "category";
+                String first = String.valueOf(i);
+                String second = String.valueOf(j);
+                String button = "Button";
+                String result = category + first + second + button;
+                buttons.get(result).setVisible(false);
+            }
+        }
+    }
+
+    public void showQuiz (JButton btn){
+        isMainScreen = false;
+        background = new ImageIcon(Main.class.getResource("../images/quizBackground.jpg")).getImage();
+        quizButtonsInvisible();
+
+
+
+        if(turn ==1 ){
+            turn = 2;
+        }else{
+            turn = 1;
+        }
+
+    }
+
+    public void backMain(){
+        isMainScreen = true;
+        quizButtonsVisible();
+        background = new ImageIcon(Main.class.getResource("../images/mainackground.jpg")).getImage();
+
     }
 }
 
