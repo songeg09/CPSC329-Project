@@ -178,6 +178,8 @@ public class JeopardyGame extends JFrame {
             }
         }
 
+        addKeyListener(new KeyListener());
+
         setUndecorated(true);
         setTitle("Jeopardy Game");
         setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
