@@ -1,4 +1,4 @@
-package src_3;
+package src_4;
 
 import src.Main;
 
@@ -141,7 +141,23 @@ public class JeopardyGame extends JFrame {
 //                       Quiz                          //
 //-----------------------------------------------------//
 
+    private ImageIcon answerButtonBasicImage = new ImageIcon(Main.class.getResource("../images/answerButtonBasic.png"));
+    private ImageIcon answerButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/answerButtonEntered.png"));
+
+    private JButton answerButton1 = new JButton("Choice1",answerButtonBasicImage);
+    private JButton answerButton2 = new JButton("Choice2",answerButtonBasicImage);
+    private JButton answerButton3 = new JButton("Choice3",answerButtonBasicImage);
+    private JButton answerButton4 = new JButton("Choice4",answerButtonBasicImage);
+
     ArrayList<Quiz> quizList = new ArrayList<Quiz>();
+
+    private HashMap<String, JButton> answerButtons = new HashMap<>(){{
+        put("answerButton1", answerButton1);
+        put("answerButton2", answerButton2);
+        put("answerButton3", answerButton3);
+        put("answerButton4", answerButton4);
+
+    }};
 
     public static boolean isQuizScreen = false;
 
@@ -369,10 +385,10 @@ public class JeopardyGame extends JFrame {
             g.setColor(Color.black);
             g.setFont(new Font("Courier New", Font.BOLD,50));
             g.drawString(quizList.get(selectedQuiz).getQuestion(), 50, 100);
-            showChoice(game.answerButton1,quizList.get(selectedQuiz).getChoice1());
-            showChoice(game.answerButton2,quizList.get(selectedQuiz).getChoice2());
-            showChoice(game.answerButton3,quizList.get(selectedQuiz).getChoice3());
-            showChoice(game.answerButton4,quizList.get(selectedQuiz).getChoice4());
+            showChoice(answerButton1,quizList.get(selectedQuiz).getChoice1());
+            showChoice(answerButton2,quizList.get(selectedQuiz).getChoice2());
+            showChoice(answerButton3,quizList.get(selectedQuiz).getChoice3());
+            showChoice(answerButton4,quizList.get(selectedQuiz).getChoice4());
         }
 
         paintComponents(g);
@@ -525,24 +541,24 @@ public class JeopardyGame extends JFrame {
             }
 
 
-            game.answerButtons.get(result).setEnabled(false);
-            game.answerButtons.get(result).setVisible(false);
-            game.answerButtons.get(result).setBounds(120, y, 1040, 93);
-            game.answerButtons.get(result).setBorderPainted(false);
-            game.answerButtons.get(result).setContentAreaFilled(false);
-            game.answerButtons.get(result).setFocusPainted(false);
+            answerButtons.get(result).setEnabled(false);
+            answerButtons.get(result).setVisible(false);
+            answerButtons.get(result).setBounds(120, y, 1040, 93);
+            answerButtons.get(result).setBorderPainted(false);
+            answerButtons.get(result).setContentAreaFilled(false);
+            answerButtons.get(result).setFocusPainted(false);
             int finalI = i;
-            game.answerButtons.get(result).addMouseListener(new MouseAdapter() {
+            answerButtons.get(result).addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    game.answerButtons.get(result).setIcon(game.answerButtonEnteredImage);
-                    game.answerButtons.get(result).setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    answerButtons.get(result).setIcon(answerButtonEnteredImage);
+                    answerButtons.get(result).setCursor(new Cursor(Cursor.HAND_CURSOR));
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    game.answerButtons.get(result).setIcon(game.answerButtonBasicImage);
-                    game.answerButtons.get(result).setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    answerButtons.get(result).setIcon(answerButtonBasicImage);
+                    answerButtons.get(result).setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 }
 
                 @Override
@@ -598,11 +614,10 @@ public class JeopardyGame extends JFrame {
                     background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
                     setAnswerButtonsInvisible();
                     setCategoryButtonsVisible();
-                    game.answerButtonsUnable();
 
                 }
             });
-            add(game.answerButtons.get(result));
+            add(answerButtons.get(result));
         }
     }
 
@@ -612,7 +627,7 @@ public class JeopardyGame extends JFrame {
             String Button = "Button";
             String index = String.valueOf(i);
             String result = answer + Button + index;
-            game.answerButtons.get(result).setVisible(true);
+            answerButtons.get(result).setVisible(true);
         }
     }
 
@@ -622,7 +637,7 @@ public class JeopardyGame extends JFrame {
             String Button = "Button";
             String index = String.valueOf(i);
             String result = answer + Button + index;
-            game.answerButtons.get(result).setVisible(false);
+            answerButtons.get(result).setVisible(false);
         }
     }
 
