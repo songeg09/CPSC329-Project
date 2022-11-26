@@ -8,6 +8,7 @@ public class Quiz {
     private String choice3;
     private String choice4;
     private int answer;
+    private int point;
 
     public String getQuestion() {
         return question;
@@ -57,12 +58,21 @@ public class Quiz {
         this.answer = answer;
     }
 
-    public Quiz(String question, String choice1, String choice2, String choice3, String choice4, int answer) {
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public Quiz(String question, String choice1, String choice2, String choice3, String choice4, int answer, int point) {
         this.question = question;
         this.choice1 = choice1;
         this.choice2 = choice2;
         this.choice3 = choice3;
         this.choice4 = choice4;
         this.answer = answer;
+        this.point = point;
     }
 }
