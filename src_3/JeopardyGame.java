@@ -35,6 +35,8 @@ public class JeopardyGame extends JFrame {
     private ImageIcon quitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/quitButtonEntered.png"));
     private JButton quitButton = new JButton(quitButtonBasicImage);
 
+    private boolean isIntroScreen;
+
 //-----------------------------------------------------//
 //                       Main                          //
 //-----------------------------------------------------//
@@ -133,8 +135,9 @@ public class JeopardyGame extends JFrame {
     private boolean isMainScreen = false;
     private int Player1Score = 0;
     private int Player2Score = 0;
-
     private int PlayerTurn = 1;
+    private int numOfQuizLeft = 30;
+
 
 
 //-----------------------------------------------------//
@@ -153,9 +156,20 @@ public class JeopardyGame extends JFrame {
     private int selectedPoint;
     private int chosenAnswer = 0;
 
+//-----------------------------------------------------//
+//                       Game Finish                   //
+//-----------------------------------------------------//
 
+    private ImageIcon Player1WinImage = new ImageIcon(Main.class.getResource("../images/Player1Win.jpg"));
+    private ImageIcon Player2WinImage = new ImageIcon(Main.class.getResource("../images/Player2Win.jpg"));
+    private ImageIcon DrawImage = new ImageIcon(Main.class.getResource("../images/Draw.jpg"));
+    private JButton Player1WinButton = new JButton(Player1WinImage);
+    private JButton Player2WinButton = new JButton(Player2WinImage);
+    private JButton DrawButton = new JButton(DrawImage);
 
     public static Game game = new Game();
+
+
 
     public JeopardyGame(){
 
@@ -333,6 +347,84 @@ public class JeopardyGame extends JFrame {
 
 
         addKeyListener(new KeyListener());
+
+        //-----------------------------------------------------//
+        //                       Game Finish                   //
+        //-----------------------------------------------------//
+
+        Player1WinButton.setVisible(false);
+        Player1WinButton.setBounds(0,0,1280,720);
+        Player1WinButton.setBorderPainted(false);
+        Player1WinButton.setContentAreaFilled(false);
+        Player1WinButton.setFocusPainted(false);
+        Player1WinButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Player1WinButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Player1WinButton.setVisible(false);
+                numOfQuizLeft = 30;
+                setCategoryButtonsEnable();
+                startButton.setVisible(true);
+                quitButton.setVisible(true);
+                background = new ImageIcon(Main.class.getResource("../images/introBackground.jpg")).getImage();
+                Player1Score = 0;
+                Player2Score = 0;
+            }
+        });
+        add(Player1WinButton);
+
+        Player2WinButton.setVisible(false);
+        Player2WinButton.setBounds(0,0,1280,720);
+        Player2WinButton.setBorderPainted(false);
+        Player2WinButton.setContentAreaFilled(false);
+        Player2WinButton.setFocusPainted(false);
+        Player2WinButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Player2WinButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Player2WinButton.setVisible(false);
+                numOfQuizLeft = 30;
+                setCategoryButtonsEnable();
+                startButton.setVisible(true);
+                quitButton.setVisible(true);
+                background = new ImageIcon(Main.class.getResource("../images/introBackground.jpg")).getImage();
+                Player1Score = 0;
+                Player2Score = 0;
+            }
+        });
+        add(Player2WinButton);
+
+
+        DrawButton.setVisible(false);
+        DrawButton.setBounds(0,0,1280,720);
+        DrawButton.setBorderPainted(false);
+        DrawButton.setContentAreaFilled(false);
+        DrawButton.setFocusPainted(false);
+        DrawButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                DrawButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                DrawButton.setVisible(false);
+                numOfQuizLeft = 30;
+                setCategoryButtonsEnable();
+                startButton.setVisible(true);
+                quitButton.setVisible(true);
+                background = new ImageIcon(Main.class.getResource("../images/introBackground.jpg")).getImage();
+                Player1Score = 0;
+                Player2Score = 0;
+            }
+        });
+        add(DrawButton);
+
     }
 
 
@@ -351,6 +443,18 @@ public class JeopardyGame extends JFrame {
     public void screenDraw(Graphics g){
         g.drawImage(background, 0, 0, null);
 
+        if(numOfQuizLeft == 0){
+            allButtonsInvisible();
+            isMainScreen = false;
+            isQuizScreen = false;
+            if(Player1Score > Player2Score){
+                Player1WinButton.setVisible(true);
+            } else if (Player1Score < Player2Score) {
+                Player2WinButton.setVisible(true);
+            } else{
+                DrawButton.setVisible(true);
+            }
+        }
         if(isMainScreen){
             g.drawImage(category1Image,  215, 10, null);
             g.drawImage(category2Image,  357, 10, null);
@@ -506,6 +610,19 @@ public class JeopardyGame extends JFrame {
         }
     }
 
+    public void setCategoryButtonsEnable(){
+        for(int i=1; i<7; i++) {
+            for (int j = 1; j < 6; j++) {
+                String category = "category";
+                String first = String.valueOf(i);
+                String second = String.valueOf(j);
+                String button = "Button";
+                String result = category + first + second + button;
+                categoryButtons.get(result).setEnabled(true);
+            }
+        }
+    }
+
     public void setAnswerButtons(){
         for (int i= 1; i <5; i++){
             String answer = "answer";
@@ -572,14 +689,13 @@ public class JeopardyGame extends JFrame {
                         String button = "Button";
                         String result = category + first + second + button;
                         categoryButtons.get(result).setEnabled(false);
+                        numOfQuizLeft = numOfQuizLeft - 15;
 
                     }else{
                         if(game.buzzer == 1){
                             Player1Score = Player1Score - selectedPoint;
                         }else if (game.buzzer == 2){
                             Player2Score = Player2Score - selectedPoint;
-                        }else{
-
                         }
                     }
 
@@ -631,6 +747,13 @@ public class JeopardyGame extends JFrame {
         btn.setText(choice);
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.CENTER);
+    }
+
+    public void allButtonsInvisible(){
+        setCategoryButtonsInvisible();
+        setAnswerButtonsInvisible();
+        Player1TurnButton.setVisible(false);
+        Player2TurnButton.setVisible(false);
     }
 
 

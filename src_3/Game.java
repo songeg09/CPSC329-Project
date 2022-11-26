@@ -31,9 +31,8 @@ public class Game extends Thread {
     private Image Player1BuzzImage = new ImageIcon(Main.class.getResource("../images/Player1Buzz.png")).getImage();
     private Image Player2BuzzImage = new ImageIcon(Main.class.getResource("../images/Player2Buzz.png")).getImage();
 
-
-
     public int buzzer = 0;
+
 
     public void screenDraw(Graphics g){
         g.drawImage(questionBoardImage,  20, 20, null);
