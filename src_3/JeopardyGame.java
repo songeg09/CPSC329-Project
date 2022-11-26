@@ -164,7 +164,7 @@ public class JeopardyGame extends JFrame {
     private int selectedPoint;
     private int chosenAnswer = 0;
 
-    private int buzzer = 0;
+
 
     public static Game game = new Game();
 
@@ -529,9 +529,9 @@ public class JeopardyGame extends JFrame {
                     }
 
                     if (chosenAnswer == selectedAnswer){
-                        if(buzzer == 1){
+                        if(game.buzzer == 1){
                             Player1Score = Player1Score + selectedPoint;
-                        }else if (buzzer == 2){
+                        }else if (game.buzzer == 2){
                             Player2Score = Player2Score + selectedPoint;
                         }else{
 
@@ -545,9 +545,9 @@ public class JeopardyGame extends JFrame {
                         categoryButtons.get(result).setEnabled(false);
 
                     }else{
-                        if(buzzer == 1){
+                        if(game.buzzer == 1){
                             Player1Score = Player1Score - selectedPoint;
-                        }else if (buzzer == 2){
+                        }else if (game.buzzer == 2){
                             Player2Score = Player2Score - selectedPoint;
                         }else{
 
@@ -555,7 +555,7 @@ public class JeopardyGame extends JFrame {
                         System.out.println("no");
                     }
 
-                    buzzer = 0;
+                    game.buzzer = 0;
 
                     if(PlayerTurn == 1){
                         PlayerTurn = 2;
