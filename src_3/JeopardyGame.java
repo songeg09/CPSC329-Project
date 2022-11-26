@@ -571,6 +571,8 @@ public class JeopardyGame extends JFrame {
                         selectedPoint = quizList.get(selectedQuiz).getPoint();
                         isMainScreen = false;
                         isQuizScreen = true;
+                        /*buzzer enable*/
+                        game.buzzer++;
                         setCategoryButtonsInvisible();
                         setAnswerButtonsVisible();
                         setFocusable(true);
@@ -699,7 +701,7 @@ public class JeopardyGame extends JFrame {
                         }
                     }
 
-                    game.buzzer = 0;
+                    game.buzzer = -1;
 
                     if(PlayerTurn == 1){
                         PlayerTurn = 2;
