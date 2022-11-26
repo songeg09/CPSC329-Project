@@ -2,6 +2,7 @@ package src_3;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game extends Thread {
@@ -31,9 +32,7 @@ public class Game extends Thread {
     private Image Player1BuzzImage = new ImageIcon(Main.class.getResource("../images/Player1Buzz.png")).getImage();
     private Image Player2BuzzImage = new ImageIcon(Main.class.getResource("../images/Player2Buzz.png")).getImage();
 
-
-
-    public int buzzer = 0;
+    public int buzzer = -1;
 
     public void screenDraw(Graphics g){
         g.drawImage(questionBoardImage,  20, 20, null);
@@ -47,21 +46,27 @@ public class Game extends Thread {
             g.drawImage(Player2BuzzImage,  140, 100, null);
         }
 
+
     }
 
     public void pressS(){
-        if(buzzer == 0){
+        if(buzzer == -1){
+            /*Buzzer unable while isQuizScreen false*/
+        }else if(buzzer == 0){
             answerButtonsEnable();
             SImage = new ImageIcon(Main.class.getResource("../images/SEntered.png")).getImage();
             buzzer = 1;
         }
+
 
     }
     public void releaseS(){
         SImage = new ImageIcon(Main.class.getResource("../images/SBasic.png")).getImage();
     }
     public void pressK(){
-        if(buzzer == 0){
+        if(buzzer == -1){
+            /*Buzzer unable while isQuizScreen false*/
+        }else if(buzzer == 0){
             answerButtonsEnable();
             KImage = new ImageIcon(Main.class.getResource("../images/KEntered.png")).getImage();
             buzzer = 2;
@@ -118,8 +123,6 @@ public class Game extends Thread {
             answerButtons.get(result).setEnabled(false);
         }
     }
-
-
 
     @Override
     public void run(){
