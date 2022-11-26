@@ -11,6 +11,8 @@ public class Game extends Thread {
     private Image SImage = new ImageIcon(Main.class.getResource("../images/SBasic.png")).getImage();
     private Image KImage = new ImageIcon(Main.class.getResource("../images/KBasic.png")).getImage();
 
+    public int buzzer = 0;
+
     public void screenDraw(Graphics g){
         g.drawImage(questionBoardImage,  20, 20, null);
         g.drawImage(P1Image,  20, 350, null);
@@ -22,15 +24,18 @@ public class Game extends Thread {
 
     public void pressS(){
         SImage = new ImageIcon(Main.class.getResource("../images/SEntered.png")).getImage();
+        buzzer = 1;
     }
     public void releaseS(){
         SImage = new ImageIcon(Main.class.getResource("../images/SBasic.png")).getImage();
     }
     public void pressK(){
         KImage = new ImageIcon(Main.class.getResource("../images/KEntered.png")).getImage();
+        buzzer = 2;
     }
     public void releaseK(){
         KImage = new ImageIcon(Main.class.getResource("../images/KBasic.png")).getImage();
+
     }
 
     @Override
