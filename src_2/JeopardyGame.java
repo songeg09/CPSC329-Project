@@ -55,6 +55,7 @@ public class JeopardyGame extends JFrame {
     private ImageIcon quiz400EnteredImage = new ImageIcon(Main.class.getResource("../images/quiz400Entered.png"));
     private ImageIcon quiz500BasicImage = new ImageIcon(Main.class.getResource("../images/quiz500Basic.png"));
     private ImageIcon quiz500EnteredImage = new ImageIcon(Main.class.getResource("../images/quiz500Entered.png"));
+    private ImageIcon quizUnableImage = new ImageIcon(Main.class.getResource("../images/quizUnable.png"));
 
     private JButton category11Button = new JButton(quiz100BasicImage);
     private JButton category12Button = new JButton(quiz200BasicImage);
@@ -125,14 +126,20 @@ public class JeopardyGame extends JFrame {
     private Image P2BoardImage = new ImageIcon(Main.class.getResource("../images/P2Board.png")).getImage();
 
     private boolean isMainScreen = false;
-    public static int Player1Score = 0;
-    public static int Player2Score = 0;
+    private int Player1Score = 0;
+    private int Player2Score = 0;
+
+    private int PlayerTurn = 1;
 
 
 //-----------------------------------------------------//
 //                       Quiz                          //
 //-----------------------------------------------------//
     private Image questionBoardImage = new ImageIcon(Main.class.getResource("../images/questionBoard.png")).getImage();
+    private Image P1Image = new ImageIcon(Main.class.getResource("../images/P1.png")).getImage();
+    private Image P2Image = new ImageIcon(Main.class.getResource("../images/P2.png")).getImage();
+    private Image SImage = new ImageIcon(Main.class.getResource("../images/SBasic.png")).getImage();
+    private Image KImage = new ImageIcon(Main.class.getResource("../images/KBasic.png")).getImage();
     private ImageIcon answerButtonBasicImage = new ImageIcon(Main.class.getResource("../images/answerButtonBasic.png"));
     private ImageIcon answerButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/answerButtonEntered.png"));
 
@@ -151,12 +158,17 @@ public class JeopardyGame extends JFrame {
 
     }};
 
-    private boolean isQuizScreen = false;
+    public static boolean isQuizScreen = false;
 
     private int selectedQuiz;
-    private int selectedAnswer;
+    private int selectedQuizX;
+    private int selectedQuizY;
 
+    private int selectedAnswer;
+    private int selectedPoint;
     private int chosenAnswer = 0;
+
+    public static int buzzer = 0;
 
     public JeopardyGame(){
 
@@ -257,37 +269,45 @@ public class JeopardyGame extends JFrame {
         //-----------------------------------------------------//
 
         setAnswerButtons();
+        /*category 1*/
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        /*category 2*/
+        quizList.add(new Quiz("Who is Jeeseong?","My brother","My roommate","My cousin","My dog",2,100));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        /*category 3*/
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        /*category 4*/
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        /*category 5*/
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        /*category 6*/
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
 
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2));
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2));
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2));
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2));
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2));
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2));
+
+        //addKeyListener(new KeyListener());
     }
 
 
@@ -321,6 +341,10 @@ public class JeopardyGame extends JFrame {
             g.drawString(String.valueOf(Player2Score), 824, 645);
         }else if(isQuizScreen){
             g.drawImage(questionBoardImage,  20, 20, null);
+            g.drawImage(P1Image,  20, 350, null);
+            g.drawImage(P2Image,  1160, 350, null);
+            g.drawImage(SImage,  20, 450, null);
+            g.drawImage(KImage,  1160, 450, null);
             g.setColor(Color.black);
             g.setFont(new Font("Courier New", Font.BOLD,50));
             g.drawString(quizList.get(selectedQuiz).getQuestion(), 50, 100);
@@ -416,7 +440,10 @@ public class JeopardyGame extends JFrame {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         selectedQuiz = (finalI - 1)*5 + (finalJ1 - 1);
+                        selectedQuizX = finalI;
+                        selectedQuizY = finalJ;
                         selectedAnswer = quizList.get(selectedQuiz).getAnswer();
+                        selectedPoint = quizList.get(selectedQuiz).getPoint();
                         isMainScreen = false;
                         isQuizScreen = true;
                         setCategoryButtonsInvisible();
@@ -476,7 +503,7 @@ public class JeopardyGame extends JFrame {
             }
 
             answerButtons.get(result).setVisible(false);
-            answerButtons.get(result).setBounds(20, y, 1240, 93);
+            answerButtons.get(result).setBounds(120, y, 1040, 93);
             answerButtons.get(result).setBorderPainted(false);
             answerButtons.get(result).setContentAreaFilled(false);
             answerButtons.get(result).setFocusPainted(false);
@@ -507,9 +534,32 @@ public class JeopardyGame extends JFrame {
                     }
 
                     if (chosenAnswer == selectedAnswer){
-                        System.out.println("yes");
+                        if(PlayerTurn == 1){
+                            Player1Score = Player1Score + selectedPoint;
+                        }else{
+                            Player2Score = Player2Score + selectedPoint;
+                        }
+
+                        String category = "category";
+                        String first = String.valueOf(selectedQuizX);
+                        String second = String.valueOf(selectedQuizY);
+                        String button = "Button";
+                        String result = category + first + second + button;
+                        categoryButtons.get(result).setEnabled(false);
+
                     }else{
+                        if(PlayerTurn == 1){
+                            Player1Score = Player1Score - selectedPoint;
+                        }else{
+                            Player2Score = Player2Score - selectedPoint;
+                        }
                         System.out.println("no");
+                    }
+
+                    if(PlayerTurn == 1){
+                        PlayerTurn = 2;
+                    }else{
+                        PlayerTurn = 1;
                     }
 
                     isMainScreen = true;
@@ -551,4 +601,16 @@ public class JeopardyGame extends JFrame {
         btn.setVerticalTextPosition(JButton.CENTER);
     }
 
+    public void pressS(){
+        SImage = new ImageIcon(Main.class.getResource("../images/SEntered.png")).getImage();
+    }
+    public void releaseS(){
+        SImage = new ImageIcon(Main.class.getResource("../images/SBasic.png")).getImage();
+    }
+    public void pressK(){
+        SImage = new ImageIcon(Main.class.getResource("../images/KEntered.png")).getImage();
+    }
+    public void releaseK(){
+        SImage = new ImageIcon(Main.class.getResource("../images/KBasic.png")).getImage();
+    }
 }
