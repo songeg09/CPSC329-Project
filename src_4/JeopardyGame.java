@@ -600,7 +600,9 @@ public class JeopardyGame extends JFrame {
                 String second = String.valueOf(j);
                 String button = "Button";
                 String result = category + first + second + button;
-                categoryButtons.get(result).setVisible(true);
+                if(quizList.get((i - 1)*5 + (j - 1)).isAble()){
+                    categoryButtons.get(result).setVisible(true);
+                }
             }
         }
     }
@@ -692,12 +694,6 @@ public class JeopardyGame extends JFrame {
 
                             }
 
-                            String category = "category";
-                            String first = String.valueOf(selectedQuizX);
-                            String second = String.valueOf(selectedQuizY);
-                            String button = "Button";
-                            String result = category + first + second + button;
-                            categoryButtons.get(result).setEnabled(false);
                             quizList.get(selectedQuiz).setAble(false);
                             numOfQuizLeft = numOfQuizLeft - 1;
 
