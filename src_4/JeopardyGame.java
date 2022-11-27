@@ -1,4 +1,4 @@
-package src_3;
+package src_4;
 
 import src.Main;
 
@@ -308,41 +308,41 @@ public class JeopardyGame extends JFrame {
 
         setAnswerButtons();
         /*category 1*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
         /*category 2*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
         /*category 3*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
         /*category 4*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
         /*category 5*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
         /*category 6*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500));
+        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
+        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
+        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
+        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
+        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
 
 
 
@@ -447,6 +447,9 @@ public class JeopardyGame extends JFrame {
             allButtonsInvisible();
             isMainScreen = false;
             isQuizScreen = false;
+            for(int i = 0; i <quizList.size(); i++){
+                quizList.get(i).setAble(true);
+            }
             if(Player1Score > Player2Score){
                 Player1WinButton.setVisible(true);
             } else if (Player1Score < Player2Score) {
@@ -569,14 +572,17 @@ public class JeopardyGame extends JFrame {
                         selectedQuizY = finalJ;
                         selectedAnswer = quizList.get(selectedQuiz).getAnswer();
                         selectedPoint = quizList.get(selectedQuiz).getPoint();
-                        isMainScreen = false;
-                        isQuizScreen = true;
-                        /*buzzer enable*/
-                        game.buzzer++;
-                        setCategoryButtonsInvisible();
-                        setAnswerButtonsVisible();
-                        setFocusable(true);
-                        background = new ImageIcon(Main.class.getResource("../images/quizBackground.jpg")).getImage();
+                        if(quizList.get(selectedQuiz).isAble()){
+                            isMainScreen = false;
+                            isQuizScreen = true;
+                            /*buzzer enable*/
+                            game.buzzer++;
+                            setCategoryButtonsInvisible();
+                            setAnswerButtonsVisible();
+                            setFocusable(true);
+                            background = new ImageIcon(Main.class.getResource("../images/quizBackground.jpg")).getImage();
+                        }
+
 
                     }
                 });
@@ -594,7 +600,9 @@ public class JeopardyGame extends JFrame {
                 String second = String.valueOf(j);
                 String button = "Button";
                 String result = category + first + second + button;
-                categoryButtons.get(result).setVisible(true);
+                if(quizList.get((i - 1)*5 + (j - 1)).isAble()){
+                    categoryButtons.get(result).setVisible(true);
+                }
             }
         }
     }
@@ -666,57 +674,55 @@ public class JeopardyGame extends JFrame {
 
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    if(finalI == 1){
-                        chosenAnswer = 1;
-                    } else if (finalI == 2) {
-                        chosenAnswer = 2;
-                    } else if (finalI == 3) {
-                        chosenAnswer = 3;
-                    } else {
-                        chosenAnswer = 4;
-                    }
+                    if(game.buzzer != 0){
+                        if(finalI == 1){
+                            chosenAnswer = 1;
+                        } else if (finalI == 2) {
+                            chosenAnswer = 2;
+                        } else if (finalI == 3) {
+                            chosenAnswer = 3;
+                        } else {
+                            chosenAnswer = 4;
+                        }
 
-                    if (chosenAnswer == selectedAnswer){
-                        if(game.buzzer == 1){
-                            Player1Score = Player1Score + selectedPoint;
-                        }else if (game.buzzer == 2){
-                            Player2Score = Player2Score + selectedPoint;
+                        if (chosenAnswer == selectedAnswer){
+                            if(game.buzzer == 1){
+                                Player1Score = Player1Score + selectedPoint;
+                            }else if (game.buzzer == 2){
+                                Player2Score = Player2Score + selectedPoint;
+                            }else{
+
+                            }
+
+                            quizList.get(selectedQuiz).setAble(false);
+                            numOfQuizLeft = numOfQuizLeft - 1;
+
                         }else{
-
+                            if(game.buzzer == 1){
+                                Player1Score = Player1Score - selectedPoint;
+                            }else if (game.buzzer == 2){
+                                Player2Score = Player2Score - selectedPoint;
+                            }
                         }
 
-                        String category = "category";
-                        String first = String.valueOf(selectedQuizX);
-                        String second = String.valueOf(selectedQuizY);
-                        String button = "Button";
-                        String result = category + first + second + button;
-                        categoryButtons.get(result).setEnabled(false);
-                        numOfQuizLeft = numOfQuizLeft - 1;
+                        game.buzzer = -1;
 
-                    }else{
-                        if(game.buzzer == 1){
-                            Player1Score = Player1Score - selectedPoint;
-                        }else if (game.buzzer == 2){
-                            Player2Score = Player2Score - selectedPoint;
+                        if(PlayerTurn == 1){
+                            PlayerTurn = 2;
+                            Player2TurnButton.setVisible(true);
+                        }else{
+                            PlayerTurn = 1;
+                            Player1TurnButton.setVisible(true);
                         }
+
+                        isMainScreen = true;
+                        isQuizScreen = false;
+                        background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
+                        setAnswerButtonsInvisible();
+                        setCategoryButtonsVisible();
+                        game.answerButtonsUnable();
                     }
 
-                    game.buzzer = -1;
-
-                    if(PlayerTurn == 1){
-                        PlayerTurn = 2;
-                        Player2TurnButton.setVisible(true);
-                    }else{
-                        PlayerTurn = 1;
-                        Player1TurnButton.setVisible(true);
-                    }
-
-                    isMainScreen = true;
-                    isQuizScreen = false;
-                    background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
-                    setAnswerButtonsInvisible();
-                    setCategoryButtonsVisible();
-                    game.answerButtonsUnable();
 
                 }
             });

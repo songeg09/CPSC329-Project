@@ -1,4 +1,4 @@
-package src_3;
+package src_4;
 
 public class Quiz {
 
@@ -68,8 +68,15 @@ public class Quiz {
         this.point = point;
     }
 
+    public boolean isAble() {
+        return able;
+    }
 
-    public Quiz(String question, String choice1, String choice2, String choice3, String choice4, int answer, int point) {
+    public void setAble(boolean able) {
+        this.able = able;
+    }
+
+    public Quiz(String question, String choice1, String choice2, String choice3, String choice4, int answer, int point, boolean able) {
         this.question = question;
         this.choice1 = choice1;
         this.choice2 = choice2;
@@ -77,5 +84,6 @@ public class Quiz {
         this.choice4 = choice4;
         this.answer = answer;
         this.point = point;
+        this.able = able;
     }
 }
