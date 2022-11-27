@@ -691,7 +691,7 @@ public class JeopardyGame extends JFrame {
                         String button = "Button";
                         String result = category + first + second + button;
                         categoryButtons.get(result).setEnabled(false);
-                        numOfQuizLeft = numOfQuizLeft - 15;
+                        numOfQuizLeft = numOfQuizLeft - 1;
 
                     }else{
                         if(game.buzzer == 1){
