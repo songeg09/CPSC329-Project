@@ -41,6 +41,7 @@ public class Game extends Thread {
         g.drawImage(KImage,  1160, 450, null);
         if(buzzer == 1){
             g.drawImage(Player1BuzzImage,  140, 100, null);
+
         } else if (buzzer == 2) {
             g.drawImage(Player2BuzzImage,  140, 100, null);
         }

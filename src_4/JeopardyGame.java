@@ -471,18 +471,23 @@ public class JeopardyGame extends JFrame {
             g.setFont(new Font("Courier New", Font.BOLD,50));
             g.drawString(String.valueOf(Player1Score), 256, 645);
             g.drawString(String.valueOf(Player2Score), 824, 645);
+            paintComponents(g);
         }else if(isQuizScreen){
-            game.screenDraw(g);
-            g.setColor(Color.black);
-            g.setFont(new Font("Courier New", Font.BOLD,50));
-            g.drawString(quizList.get(selectedQuiz).getQuestion(), 50, 100);
             showChoice(game.answerButton1,quizList.get(selectedQuiz).getChoice1());
             showChoice(game.answerButton2,quizList.get(selectedQuiz).getChoice2());
             showChoice(game.answerButton3,quizList.get(selectedQuiz).getChoice3());
             showChoice(game.answerButton4,quizList.get(selectedQuiz).getChoice4());
+            paintComponents(g);
+            game.screenDraw(g);
+            g.setColor(Color.black);
+            g.setFont(new Font("Courier New", Font.BOLD,50));
+            g.drawString(quizList.get(selectedQuiz).getQuestion(), 50, 100);
+
+        }else{
+            paintComponents(g);
         }
 
-        paintComponents(g);
+
         this.repaint();
     }
 
