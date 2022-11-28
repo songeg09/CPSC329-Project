@@ -156,6 +156,8 @@ public class JeopardyGame extends JFrame {
     private int selectedPoint;
     private int chosenAnswer = 0;
 
+
+
 //-----------------------------------------------------//
 //                       Game Finish                   //
 //-----------------------------------------------------//
@@ -306,7 +308,7 @@ public class JeopardyGame extends JFrame {
         //                       Quiz                          //
         //-----------------------------------------------------//
 
-        setAnswerButtons();
+
         /*category 1*/
         quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
         quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
@@ -344,6 +346,119 @@ public class JeopardyGame extends JFrame {
         quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
         quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
 
+        game.Player1BuzzButton.setVisible(false);
+        game.Player1BuzzButton.setBounds(0,0,1280,720);
+        game.Player1BuzzButton.setBorderPainted(false);
+        game.Player1BuzzButton.setContentAreaFilled(false);
+        game.Player1BuzzButton.setFocusPainted(false);
+        game.Player1BuzzButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                game.Player1BuzzButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                game.Player1BuzzButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                game.Player1BuzzButton.setVisible(false);
+            }
+        });
+        add(game.Player1BuzzButton);
+
+        game.Player2BuzzButton.setVisible(false);
+        game.Player2BuzzButton.setBounds(0,0,1280,720);
+        game.Player2BuzzButton.setBorderPainted(false);
+        game.Player2BuzzButton.setContentAreaFilled(false);
+        game.Player2BuzzButton.setFocusPainted(false);
+        game.Player2BuzzButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                game.Player2BuzzButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                game.Player2BuzzButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                game.Player2BuzzButton.setVisible(false);
+            }
+        });
+        add(game.Player2BuzzButton);
+
+        game.AnswerCorrectButton.setVisible(false);
+        game.AnswerCorrectButton.setBounds(0,0,1280,720);
+        game.AnswerCorrectButton.setBorderPainted(false);
+        game.AnswerCorrectButton.setContentAreaFilled(false);
+        game.AnswerCorrectButton.setFocusPainted(false);
+        game.AnswerCorrectButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                game.AnswerCorrectButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                game.AnswerCorrectButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                game.AnswerCorrectButton.setVisible(false);
+                if(PlayerTurn == 1){
+                    PlayerTurn = 2;
+                    Player2TurnButton.setVisible(true);
+                }else{
+                    PlayerTurn = 1;
+                    Player1TurnButton.setVisible(true);
+                }
+                isMainScreen = true;
+                isQuizScreen = false;
+                background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
+                setAnswerButtonsInvisible();
+                setCategoryButtonsVisible();
+                game.answerButtonsUnable();
+            }
+        });
+        add(game.AnswerCorrectButton);
+
+        game.AnswerWrongButton.setVisible(false);
+        game.AnswerWrongButton.setBounds(0,0,1280,720);
+        game.AnswerWrongButton.setBorderPainted(false);
+        game.AnswerWrongButton.setContentAreaFilled(false);
+        game.AnswerWrongButton.setFocusPainted(false);
+        game.AnswerWrongButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                game.AnswerWrongButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                game.AnswerWrongButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                game.AnswerWrongButton.setVisible(false);
+                if(PlayerTurn == 1){
+                    PlayerTurn = 2;
+                    Player2TurnButton.setVisible(true);
+                }else{
+                    PlayerTurn = 1;
+                    Player1TurnButton.setVisible(true);
+                }
+                isMainScreen = true;
+                isQuizScreen = false;
+                background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
+                setAnswerButtonsInvisible();
+                setCategoryButtonsVisible();
+                game.answerButtonsUnable();
+            }
+        });
+        add(game.AnswerWrongButton);
+
+        setAnswerButtons();
 
 
         addKeyListener(new KeyListener());
@@ -437,10 +552,11 @@ public class JeopardyGame extends JFrame {
         screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         screenGraphic = screenImage.getGraphics();
         screenDraw(screenGraphic);
+
         g.drawImage(screenImage, 0, 0, null);
     }
 
-    public void screenDraw(Graphics g){
+    public void screenDraw(Graphics g)  {
         g.drawImage(background, 0, 0, null);
 
         if(numOfQuizLeft == 0){
@@ -477,12 +593,11 @@ public class JeopardyGame extends JFrame {
             showChoice(game.answerButton2,quizList.get(selectedQuiz).getChoice2());
             showChoice(game.answerButton3,quizList.get(selectedQuiz).getChoice3());
             showChoice(game.answerButton4,quizList.get(selectedQuiz).getChoice4());
-            paintComponents(g);
             game.screenDraw(g);
+            paintComponents(g);
             g.setColor(Color.black);
             g.setFont(new Font("Courier New", Font.BOLD,50));
             g.drawString(quizList.get(selectedQuiz).getQuestion(), 50, 100);
-
         }else{
             paintComponents(g);
         }
@@ -702,30 +817,21 @@ public class JeopardyGame extends JFrame {
                             quizList.get(selectedQuiz).setAble(false);
                             numOfQuizLeft = numOfQuizLeft - 1;
 
+                            game.AnswerCorrectButton.setVisible(true);
+
                         }else{
                             if(game.buzzer == 1){
                                 Player1Score = Player1Score - selectedPoint;
                             }else if (game.buzzer == 2){
                                 Player2Score = Player2Score - selectedPoint;
                             }
+
+                            game.AnswerWrongButton.setVisible(true);
                         }
 
                         game.buzzer = -1;
 
-                        if(PlayerTurn == 1){
-                            PlayerTurn = 2;
-                            Player2TurnButton.setVisible(true);
-                        }else{
-                            PlayerTurn = 1;
-                            Player1TurnButton.setVisible(true);
-                        }
 
-                        isMainScreen = true;
-                        isQuizScreen = false;
-                        background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
-                        setAnswerButtonsInvisible();
-                        setCategoryButtonsVisible();
-                        game.answerButtonsUnable();
                     }
 
 

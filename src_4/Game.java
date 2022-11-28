@@ -20,6 +20,16 @@ public class Game extends Thread {
     public JButton answerButton3 = new JButton("Choice3",answerButtonBasicImage);
     public JButton answerButton4 = new JButton("Choice4",answerButtonBasicImage);
 
+    public ImageIcon Player1BuzzImage = new ImageIcon(src.Main.class.getResource("../images/Player1Buzz.png"));
+    public ImageIcon Player2BuzzImage = new ImageIcon(src.Main.class.getResource("../images/Player2Buzz.png"));
+    public JButton Player1BuzzButton = new JButton(Player1BuzzImage);
+    public JButton Player2BuzzButton = new JButton(Player2BuzzImage);
+
+    public ImageIcon AnswerCorrectImage = new ImageIcon(src.Main.class.getResource("../images/AnswerCorrect.png"));
+    public ImageIcon AnswerWrongImage = new ImageIcon(src.Main.class.getResource("../images/AnswerWrong.png"));
+    public JButton AnswerCorrectButton = new JButton(AnswerCorrectImage);
+    public JButton AnswerWrongButton = new JButton(AnswerWrongImage);
+
     public HashMap<String, JButton> answerButtons = new HashMap<>(){{
         put("answerButton1", answerButton1);
         put("answerButton2", answerButton2);
@@ -28,8 +38,6 @@ public class Game extends Thread {
 
     }};
 
-    private Image Player1BuzzImage = new ImageIcon(Main.class.getResource("../images/Player1Buzz.png")).getImage();
-    private Image Player2BuzzImage = new ImageIcon(Main.class.getResource("../images/Player2Buzz.png")).getImage();
 
     public int buzzer = -1;
 
@@ -39,14 +47,6 @@ public class Game extends Thread {
         g.drawImage(P2Image,  1160, 350, null);
         g.drawImage(SImage,  20, 450, null);
         g.drawImage(KImage,  1160, 450, null);
-        if(buzzer == 1){
-            g.drawImage(Player1BuzzImage,  140, 100, null);
-
-        } else if (buzzer == 2) {
-            g.drawImage(Player2BuzzImage,  140, 100, null);
-        }
-
-
     }
 
     public void pressS(){
@@ -56,6 +56,7 @@ public class Game extends Thread {
             answerButtonsEnable();
             SImage = new ImageIcon(Main.class.getResource("../images/SEntered.png")).getImage();
             buzzer = 1;
+            Player1BuzzButton.setVisible(true);
         }
 
 
@@ -70,6 +71,7 @@ public class Game extends Thread {
             answerButtonsEnable();
             KImage = new ImageIcon(Main.class.getResource("../images/KEntered.png")).getImage();
             buzzer = 2;
+            Player2BuzzButton.setVisible(true);
         }
 
     }
