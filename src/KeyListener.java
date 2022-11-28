@@ -7,21 +7,26 @@ public class KeyListener extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e){
-        if(e.getKeyCode() == KeyEvent.VK_S){
-
+        if(JeopardyGame.game == null){
+            return;
         }
-        else if(e.getKeyCode() == KeyEvent.VK_K){
-
+        if(e.getKeyCode() == KeyEvent.VK_K){
+            JeopardyGame.game.pressK();
+        }else if(e.getKeyCode() == KeyEvent.VK_S){
+            JeopardyGame.game.pressS();
         }
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_S) {
-
-        } else if (e.getKeyCode() == KeyEvent.VK_K) {
-
-
+    public void keyReleased(KeyEvent e){
+        if(JeopardyGame.game == null){
+            return;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_K){
+            JeopardyGame.game.releaseK();
+        }else if(e.getKeyCode() == KeyEvent.VK_S){
+            JeopardyGame.game.releaseS();
         }
     }
+
 }

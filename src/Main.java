@@ -1,8 +1,5 @@
 package src;
 
-import src.JeopardyGame;
-
-
 public class Main {
 
     public static final int SCREEN_WIDTH = 1280;
@@ -16,4 +13,3 @@ public class Main {
     }
 
 }
-
