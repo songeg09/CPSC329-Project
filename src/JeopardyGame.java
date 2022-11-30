@@ -311,14 +311,14 @@ public class JeopardyGame extends JFrame {
         quizList.add(new Quiz("Which of the following is the most commonly used and therefore weakest password?","123456","aeiou","Iloveyou","Monkey",1,100,true));
         quizList.add(new Quiz("Which of the following is a user-side vulnerability of passwords?","Key-logging","Shoulder surfing","Phishing","All of the above",4,200,true));
         quizList.add(new Quiz("According to the NIST password guidelines, a user-created password should be at least how many characters?","4","6","8","10",3,300,true));
-        quizList.add(new Quiz("What is the name of the property that a hash function has in which for a given h in the output of the hash function, it is hard to find any password x such that H(x)=h?","Collision resistance","Preimage resistance","One-wayness","Fingerprinting",2,400,true));
+        quizList.add(new Quiz("What is the name of the property that a hash function has in which for a given h in the output of the hash function, it is hard to find any password x such that H(x)= h?","Collision resistance","Preimage resistance","One-wayness","Fingerprinting",2,400,true));
         quizList.add(new Quiz("How much longer does it take to crack a 12-character password which may contain uppercase letters, lowercase letters, the 10 digits, and 10 symbols, versus a password with just six lowercase letters?","62 times longer","62,000 times longer","62 million times longer","62 trillion times longer",4,500,true));
         /*category 2*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("What of the following is a type of malware that may cause pop-up advertisements to appear?","Adware","Keylogger","Dropper","Ransomware",1,100,true));
+        quizList.add(new Quiz("Which of the following malicious programs evades detection by appearing legitimate?","Worm","Botnet","Ransomware","Trojan horse",4,200,true));
+        quizList.add(new Quiz("Which of the following malware spreads by replicating itself and with little-to-no user involvement?","Trojan horse","Worm","Spyware","Rootkit",2,300,true));
+        quizList.add(new Quiz("Phishing, baiting, and scareware are examples of _____?","Probes","Insider threats","Social engineering","Ransomware",3,400,true));
+        quizList.add(new Quiz("What is the name of the fastest spreading computer worm of all time, which caused an estimated $38 billion in damages?","ILOVEYOU","Mydoom","Melissa","SQL Slammer",2,500,true));
         /*category 3*/
         quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
         quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
@@ -823,7 +823,6 @@ public class JeopardyGame extends JFrame {
                             }else if (game.buzzer == 2){
                                 Player2Score = Player2Score - selectedPoint;
                             }
-
                             game.AnswerWrongButton.setVisible(true);
                         }
 
