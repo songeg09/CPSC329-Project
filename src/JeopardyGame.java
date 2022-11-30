@@ -308,11 +308,11 @@ public class JeopardyGame extends JFrame {
 
 
         /*category 1*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("Which of the following is the most commonly used and therefore weakest password?","123456","aeiou","Iloveyou","Monkey",1,100,true));
+        quizList.add(new Quiz("Which of the following is a user-side vulnerability of passwords?","Key-logging","Shoulder surfing","Phishing","All of the above",4,200,true));
+        quizList.add(new Quiz("According to the NIST password guidelines, a user-created password should be at least how many characters?","4","6","8","10",3,300,true));
+        quizList.add(new Quiz("What is the name of the property that a hash function has in which for a given h in the output of the hash function, it is hard to find any password x such that H(x)=h?","Collision resistance","Preimage resistance","One-wayness","Fingerprinting",2,400,true));
+        quizList.add(new Quiz("How much longer does it take to crack a 12-character password which may contain uppercase letters, lowercase letters, the 10 digits, and 10 symbols, versus a password with just six lowercase letters?","62 times longer","62,000 times longer","62 million times longer","62 trillion times longer",4,500,true));
         /*category 2*/
         quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
         quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
@@ -549,12 +549,12 @@ public class JeopardyGame extends JFrame {
     public void paint(Graphics g) {
         screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         screenGraphic = screenImage.getGraphics();
-        screenDraw(screenGraphic);
+        screenDraw((Graphics2D) screenGraphic);
 
         g.drawImage(screenImage, 0, 0, null);
     }
 
-    public void screenDraw(Graphics g)  {
+    public void screenDraw(Graphics2D g)  {
         g.drawImage(background, 0, 0, null);
 
         if(numOfQuizLeft == 0){
@@ -594,8 +594,8 @@ public class JeopardyGame extends JFrame {
             game.screenDraw(g);
             paintComponents(g);
             g.setColor(Color.black);
-            g.setFont(new Font("Courier New", Font.BOLD,50));
-            g.drawString(quizList.get(selectedQuiz).getQuestion(), 50, 100);
+            g.setFont(new Font("Courier New", Font.BOLD,40));
+            drawStringMultiLine(g, quizList.get(selectedQuiz).getQuestion(), 1150, 50, 100);
         }else{
             paintComponents(g);
         }
@@ -873,5 +873,26 @@ public class JeopardyGame extends JFrame {
         Player2TurnButton.setVisible(false);
     }
 
+    public static void drawStringMultiLine(Graphics2D g, String text, int lineWidth, int x, int y) {
+        FontMetrics m = g.getFontMetrics();
+        if(m.stringWidth(text) < lineWidth) {
+            g.drawString(text, x, y);
+        } else {
+            String[] words = text.split(" ");
+            String currentLine = words[0];
+            for(int i = 1; i < words.length; i++) {
+                if(m.stringWidth(currentLine+words[i]) < lineWidth) {
+                    currentLine += " "+words[i];
+                } else {
+                    g.drawString(currentLine, x, y);
+                    y += m.getHeight();
+                    currentLine = words[i];
+                }
+            }
+            if(currentLine.trim().length() > 0) {
+                g.drawString(currentLine, x, y);
+            }
+        }
+    }
 
 }
