@@ -38,6 +38,8 @@ public class Game extends Thread {
 
     }};
 
+    public ImageIcon DoublePointsImage = new ImageIcon(src.Main.class.getResource("../images/DoublePoints.png"));
+    public JButton DoublePointsButton = new JButton(DoublePointsImage);
 
     public int buzzer = -1;
 

@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class JeopardyGame extends JFrame {
 
@@ -388,6 +389,28 @@ public class JeopardyGame extends JFrame {
         });
         add(game.Player2BuzzButton);
 
+        game.DoublePointsButton.setVisible(false);
+        game.DoublePointsButton.setBounds(0,0,1280,720);
+        game.DoublePointsButton.setBorderPainted(false);
+        game.DoublePointsButton.setContentAreaFilled(false);
+        game.DoublePointsButton.setFocusPainted(false);
+        game.DoublePointsButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                game.DoublePointsButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                game.DoublePointsButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                game.DoublePointsButton.setVisible(false);
+            }
+        });
+        add(game.DoublePointsButton);
+
         game.AnswerCorrectButton.setVisible(false);
         game.AnswerCorrectButton.setBounds(0,0,1280,720);
         game.AnswerCorrectButton.setBorderPainted(false);
@@ -693,6 +716,7 @@ public class JeopardyGame extends JFrame {
                         if(quizList.get(selectedQuiz).isAble()){
                             isMainScreen = false;
                             isQuizScreen = true;
+                            doublePoints();
                             /*buzzer enable*/
                             game.buzzer++;
                             setCategoryButtonsInvisible();
@@ -891,6 +915,18 @@ public class JeopardyGame extends JFrame {
             if(currentLine.trim().length() > 0) {
                 g.drawString(currentLine, x, y);
             }
+        }
+    }
+
+    /* 10% chance when someone picks a question for it to be double points */
+    public void doublePoints() {
+        Random rand = new Random();
+        int min = 1;
+        int max = 10;
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        if (randomNum == 10) {
+            game.DoublePointsButton.setVisible(true);
+            selectedPoint += selectedPoint;
         }
     }
 
