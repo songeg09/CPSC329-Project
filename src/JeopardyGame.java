@@ -321,29 +321,30 @@ public class JeopardyGame extends JFrame {
         quizList.add(new Quiz("Phishing, baiting, and scareware are examples of _____?","Probes","Insider threats","Social engineering","Ransomware",3,400,true));
         quizList.add(new Quiz("What is the name of the fastest spreading computer worm of all time, which caused an estimated $38 billion in damages?","ILOVEYOU","Mydoom","Melissa","SQL Slammer",2,500,true));
         /*category 3*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("Biometrics are a measure of…","Physical characteristics","Mental characteristics","Digital characteristics","Behavioral characteristics",1,100,true));
+        quizList.add(new Quiz("What is a certificate in relation to message security?","A physical object that shows a users’ ownership of a skill or object","A digital object that shows a users’ ownership of a skill or object","A physical object that verifies a user","A digital object that verifies a user",4,200,true));
+        quizList.add(new Quiz("Given the following Unix permission bits of a file, what permissions were given to everyone?  " +
+                "-rw-rwx-r-x 1 owner student 0 19 April 13:10 file2","Read only","Read and write","Read, write, and execute","Read and execute",4,300,true));
+        quizList.add(new Quiz("Which of the following access control policies includes an implementation where users are only able to read-down and write-up?","Role Based Policy (RBAC)","Mandatory Access Policy (MAC)","Discretionary Policy (DAC)","Diffie-Hellman Protocol (DH)",2,400,true));
+        quizList.add(new Quiz("NOT IMPLEMENTED","121","144","136","98",2,500,true));
         /*category 4*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("What does the term “salt” refer to in relation to hashing?","A chemical compound used to season or preserve food","A person acting upset or bitter about past or current events","Random data added as additional input before encryption","Digital information that has been modified",3,100,true));
+        quizList.add(new Quiz("Given the key = 1000 1011 1101 and the message = 1111 1010 0011, what is the resulting ciphertext if an exclusive-or operation is applied to the message with the key?","0111 0001 1100","0111 0001 1110","1000 0001 1100","1000 0011 1110",2,200,true));
+        quizList.add(new Quiz("Which of the following is NOT a requirement for One-Time Pad (OTP) encryptions to have perfect secrecy against an eavesdropper?","The contents of the pad must be truly random","No part of the pad can be used more than once","The resulting ciphertext of the pad must not be leaked","The pad must be the same size or larger than the message being encrypted",3,300,true));
+        quizList.add(new Quiz("In a block cipher, how many possible keys are there when the block size is 3?","8","2048","40,320","Over 1 million",3,400,true));
+        quizList.add(new Quiz("In blockchain encryption data is grouped together as blocks and stored. How easily modifiable is data stored in a blockchain system?","Unable to be modified","Difficult to modify","Easy to modify","Dependent on which block of the blockchain you are on",1,500,true));
         /*category 5*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("What is the number 27 in decimal form?","11011","27","1b","33",2,100,true));
+        quizList.add(new Quiz("If the binary string 1100 represents the number 12, which bit is the most significant bit (msb)?","The leftmost bit","The second bit from the left","The second bit from the right","The rightmost bit",1,200,true));
+        quizList.add(new Quiz("What is the largest number (in decimal form) that can be represented by 2 hex digits in hexadecimal form?","64","128","255","256",3,300,true));
+        quizList.add(new Quiz("How many bits are needed to represent an ASCII character? (ignoring the one parity bit)","3","7","15","31",2,400,true));
+        quizList.add(new Quiz("What is the signed binary number 1101 in decimal form?","13","-13","5","-5",4,500,true));
         /*category 6*/
-        quizList.add(new Quiz("What is my name?","Song","Son","Dong","Long",1,100,true));
-        quizList.add(new Quiz("How old am I?","18","19","23","24",3,200,true));
-        quizList.add(new Quiz("Where am I from?","Vietnam","Japan","China","South Korea",4,300,true));
-        quizList.add(new Quiz("What is 1+1?","1","2","3","0",2,400,true));
-        quizList.add(new Quiz("What is 12*12","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("How should passwords be stored in a network system?","Stored in a digital file in plaintext","Stored in a digital file in encrypted form","Stored in a physical file inside of a vault","Not stored in the network at all",2,100,true));
+        quizList.add(new Quiz("What does a man-in-the-middle attack refer to?","Communication between two parties is relayed through a third-party unintentionally","An individual or network is attacked by multiple parties simultaneously","An insider attacks an organization from within","When an attack is conducted through an unaware and innocent individual",1,200,true));
+        quizList.add(new Quiz("What is not a method of improving the security of a password system?","Slowing down a password system","Multi-factor authentication","Including complexity rules for password (numbers, special characters, etc)","Not forcing users to change passwords periodically",3,300,true));
+        quizList.add(new Quiz("What is a distributed denial-of-service attack?","Targeting numerous networks and blocking user access to them","Targeting groups of users and blocking them from accessing their network","Disrupting a network by overwhelming it with fake traffic to block user access","Disrupting a network through physical destruction of the hardware its run on",3,400,true));
+        quizList.add(new Quiz("What year were cybercrime laws first introduced to the world?","1965","1986","2001","2012",2,500,true));
 
         game.Player1BuzzButton.setVisible(false);
         game.Player1BuzzButton.setBounds(0,0,1280,720);
@@ -883,7 +884,15 @@ public class JeopardyGame extends JFrame {
     }
 
     public void showChoice(JButton btn, String choice){
-        btn.setFont(new Font("Courier New", Font.BOLD,50));
+        int length = choice.length();
+        if (length > 55) {
+            btn.setFont(new Font("Courier New", Font.BOLD,20));
+        } else if (length > 35) {
+            btn.setFont(new Font("Courier New", Font.BOLD,30));
+        }
+        else {
+            btn.setFont(new Font("Courier New", Font.BOLD,40));
+        }
         btn.setText(choice);
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.CENTER);
