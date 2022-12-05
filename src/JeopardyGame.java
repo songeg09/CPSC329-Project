@@ -326,7 +326,7 @@ public class JeopardyGame extends JFrame {
         quizList.add(new Quiz("Given the following Unix permission bits of a file, what permissions were given to everyone?  " +
                 "-rw-rwx-r-x 1 owner student 0 19 April 13:10 file2","Read only","Read and write","Read, write, and execute","Read and execute",4,300,true));
         quizList.add(new Quiz("Which of the following access control policies includes an implementation where users are only able to read-down and write-up?","Role Based Policy (RBAC)","Mandatory Access Policy (MAC)","Discretionary Policy (DAC)","Diffie-Hellman Protocol (DH)",2,400,true));
-        quizList.add(new Quiz("NOT IMPLEMENTED","121","144","136","98",2,500,true));
+        quizList.add(new Quiz("Jeremy Lee, an Australian man, won a historic privacy case against his employer after he was fired for refusing to use a fingerprint scanner. What was the court’s reasoning for ruling in his favor?","He was not given proper consent processes","He was not provided an alternative to using biometrics","The employer did not comply with regulatory requirements","He was both not given proper consent processes and not provided an alternative to using biometrics",4,500,true));
         /*category 4*/
         quizList.add(new Quiz("What does the term “salt” refer to in relation to hashing?","A chemical compound used to season or preserve food","A person acting upset or bitter about past or current events","Random data added as additional input before encryption","Digital information that has been modified",3,100,true));
         quizList.add(new Quiz("Given the key = 1000 1011 1101 and the message = 1111 1010 0011, what is the resulting ciphertext if an exclusive-or operation is applied to the message with the key?","0111 0001 1100","0111 0001 1110","1000 0001 1100","1000 0011 1110",2,200,true));
@@ -885,7 +885,10 @@ public class JeopardyGame extends JFrame {
 
     public void showChoice(JButton btn, String choice){
         int length = choice.length();
-        if (length > 55) {
+
+        if (length > 95) {
+            btn.setFont(new Font("Courier New", Font.BOLD,17));
+        } else if (length > 55) {
             btn.setFont(new Font("Courier New", Font.BOLD,20));
         } else if (length > 35) {
             btn.setFont(new Font("Courier New", Font.BOLD,30));
